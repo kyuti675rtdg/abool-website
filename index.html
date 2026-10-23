@@ -1,0 +1,490 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ABOOL — Agricultural Traceability &amp; Compliance Platform</title>
+<meta name="description" content="ABOOL is an open-source digital infrastructure platform for agricultural supply-chain traceability, geospatial verification, EUDR compliance, and product provenance. Initially focused on Ethiopian coffee.">
+<style>
+:root{--green:#14532d;--green2:#166534;--leaf:#22c55e;--earth:#92400e;--coffee:#3b2314;--bg:#faf9f6;--card:#ffffff;--ink:#1c1917;--muted:#57534e;--line:#e7e5e4;--gold:#d97706}
+*{box-sizing:border-box} html{scroll-behavior:smooth}
+body{margin:0;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Inter,Arial,sans-serif;background:var(--bg);color:var(--ink);line-height:1.65;-webkit-font-smoothing:antialiased}
+.topbar{background:var(--coffee);color:#fef3c7;font-size:13px;text-align:center;padding:8px 16px}
+.topbar a{color:#fde68a}
+header.site{position:sticky;top:0;z-index:50;background:rgba(20,83,45,.97);backdrop-filter:blur(8px);color:#fff}
+.nav{max-width:1080px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;padding:14px 20px;gap:12px;flex-wrap:wrap}
+.logo{font-weight:800;font-size:22px;letter-spacing:.5px;color:#fff;text-decoration:none}
+.logo span{color:var(--leaf)}
+.nav-links{display:flex;gap:6px;flex-wrap:wrap}
+.nav-links a{color:#dcfce7;text-decoration:none;font-size:14px;padding:6px 10px;border-radius:8px}
+.nav-links a:hover{background:rgba(255,255,255,.14);color:#fff}
+main{max-width:1080px;margin:0 auto;padding:28px 20px 64px}
+article{background:var(--card);border:1px solid var(--line);border-radius:20px;padding:36px 40px;box-shadow:0 8px 30px rgba(28,25,23,.06)}
+article h1{font-size:clamp(26px,4.5vw,40px);line-height:1.2;color:var(--green);margin:.2em 0 .5em}
+article h2{font-size:clamp(21px,3.4vw,28px);color:var(--green);border-bottom:2px solid #dcfce7;padding-bottom:8px;margin-top:1.6em}
+article h3{font-size:19px;color:var(--coffee);margin-top:1.4em}
+article a{color:var(--green2)}
+article blockquote{border-left:4px solid var(--gold);background:#fffbeb;margin:1em 0;padding:12px 18px;border-radius:0 12px 12px 0;color:#44403c}
+article pre{background:#1c1917;color:#e7e5e4;padding:18px;border-radius:14px;overflow-x:auto;font-size:13.5px;line-height:1.55}
+article code{font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace}
+article p code, article li code{background:#f0fdf4;border:1px solid #dcfce7;padding:1px 6px;border-radius:6px;font-size:.92em;color:var(--green)}
+article hr{border:none;border-top:1px solid var(--line);margin:2em 0}
+article ul,article ol{padding-left:1.4em}
+article li{margin:.25em 0}
+article table{border-collapse:collapse;width:100%;overflow-x:auto;display:block}
+article th,article td{border:1px solid var(--line);padding:8px 12px;text-align:left}
+footer{background:var(--coffee);color:#d6d3d1;padding:36px 20px;text-align:center;font-size:14px}
+footer a{color:#fde68a}
+footer .tag{font-size:18px;color:#fff;font-weight:700}
+@media(max-width:640px){article{padding:22px 18px;border-radius:14px} .nav{justify-content:center;text-align:center} main{padding:16px 10px 48px}}
+</style>
+</head>
+<body>
+<div class="topbar">Website rendered from the cloned <a href="https://github.com/ABOOL-PLATFORM">github.com/ABOOL-PLATFORM</a> README &mdash; the platform code (web / api / mobile) has not been published yet.</div>
+<header class="site"><div class="nav">
+<a class="logo" href="#">ABOOL<span>.</span></a>
+<nav class="nav-links">
+<a href="#vision">Vision</a><a href="#core-platform">Core Platform</a><a href="#eudr-compliance">EUDR</a><a href="#coffee-passport">Coffee Passport</a><a href="#abol-mobile">Mobile</a><a href="#architecture">Architecture</a><a href="#roadmap">Roadmap</a>
+</nav></div></header>
+<main><article>
+<h1 id="abool-agricultural-traceability-compliance-platform">ABOOL — Agricultural Traceability &amp; Compliance Platform</h1>
+<blockquote>
+<p><strong>ABOL</strong> is an open-source digital infrastructure platform for agricultural supply-chain traceability, geospatial verification, compliance, and product provenance.</p>
+</blockquote>
+<p>ABOL is designed to connect <strong>farmers, cooperatives, unions, processors, exporters, regulators, certification bodies, and international buyers</strong> through a shared digital traceability infrastructure.</p>
+<p>The platform initially focuses on <strong>Ethiopian coffee</strong>, with a strong emphasis on <strong>EUDR compliance, farm-level geolocation, deforestation-risk verification, and digital product passports</strong>.</p>
+<hr />
+<h2 id="vision">🌍 Vision</h2>
+<p>Build trusted digital infrastructure that makes agricultural products <strong>traceable, verifiable, compliant, and globally accessible</strong>.</p>
+<p>ABOL aims to transform fragmented agricultural supply-chain data into a connected digital system where every product can be traced back to its origin.</p>
+<pre><code class="language-text">Farm
+  ↓
+Plot
+  ↓
+Farmer / Cooperative
+  ↓
+Washing Station / Processor
+  ↓
+Union
+  ↓
+Exporter
+  ↓
+International Buyer
+  ↓
+Consumer
+</code></pre>
+<hr />
+<h2 id="what-abol-solves">🎯 What ABOL Solves</h2>
+<p>Agricultural supply chains often suffer from:</p>
+<ul>
+<li>Fragmented producer information</li>
+<li>Limited farm-level traceability</li>
+<li>Manual record keeping</li>
+<li>Poor geospatial data</li>
+<li>Difficult EUDR compliance</li>
+<li>Lack of standardized digital records</li>
+<li>Limited visibility between supply-chain actors</li>
+<li>Difficulty verifying product origin</li>
+<li>Expensive compliance processes</li>
+<li>Weak interoperability between existing systems</li>
+</ul>
+<p>ABOL provides a digital infrastructure layer to address these challenges.</p>
+<hr />
+<h1 id="core-platform">🚀 Core Platform</h1>
+<h3 id="1-farm-farmer-registry">1. Farm &amp; Farmer Registry</h3>
+<p>Digitally register and manage:</p>
+<ul>
+<li>Farmers</li>
+<li>Farms</li>
+<li>Agricultural plots</li>
+<li>Cooperatives</li>
+<li>Cooperative unions</li>
+<li>Washing stations</li>
+<li>Processors</li>
+<li>Exporters</li>
+<li>Supply-chain relationships</li>
+</ul>
+<hr />
+<h3 id="2-geoverify">2. GeoVerify</h3>
+<p><strong>ABOL GeoVerify</strong> is the geospatial verification component of ABOL.</p>
+<p>It is designed to verify agricultural plots against geospatial and environmental datasets.</p>
+<p>Key capabilities include:</p>
+<ul>
+<li>GPS point capture</li>
+<li>Polygon mapping</li>
+<li>Plot-area calculation</li>
+<li>GeoJSON support</li>
+<li>Satellite-data integration</li>
+<li>Historical land-cover analysis</li>
+<li>Deforestation-risk assessment</li>
+<li>Coordinate validation</li>
+<li>Spatial intersection analysis</li>
+<li>Evidence generation</li>
+</ul>
+<p>Example workflow:</p>
+<pre><code class="language-text">GPS Coordinates
+      ↓
+Plot Geometry
+      ↓
+Area Validation
+      ↓
+Historical Satellite Data
+      ↓
+Forest / Land-Cover Analysis
+      ↓
+Deforestation Risk
+      ↓
+Verification Result
+      ↓
+EUDR Evidence
+</code></pre>
+<hr />
+<h1 id="eudr-compliance">🌳 EUDR Compliance</h1>
+<p>ABOL is being designed to support supply-chain actors preparing evidence for the <strong>EU Deforestation Regulation (EUDR)</strong>.</p>
+<p>The platform can organize information required for due-diligence workflows, including:</p>
+<ul>
+<li>Country of production</li>
+<li>Farm/plot geolocation</li>
+<li>Product information</li>
+<li>Commodity information</li>
+<li>Producer/supplier information</li>
+<li>Production volume</li>
+<li>Traceability relationships</li>
+<li>Legal-compliance evidence</li>
+<li>Geospatial verification</li>
+<li>Deforestation-risk assessment</li>
+<li>Due-diligence documentation</li>
+</ul>
+<blockquote>
+<p>ABOL is intended to support compliance workflows and evidence management. It does not replace the legal responsibility of operators or competent authorities.</p>
+</blockquote>
+<hr />
+<h1 id="coffee-passport">☕ Coffee Passport</h1>
+<p>The <strong>ABOL Coffee Passport</strong> provides a digital identity for coffee lots and products.</p>
+<p>A passport can connect:</p>
+<pre><code class="language-text">Farmer
+   ↓
+Farm
+   ↓
+Plot
+   ↓
+Harvest
+   ↓
+Processing
+   ↓
+Lot
+   ↓
+Quality / COA
+   ↓
+Transaction
+   ↓
+Export
+</code></pre>
+<p>The goal is to provide a persistent digital provenance record from origin to export.</p>
+<hr />
+<h1 id="abol-mobile">📱 ABOL Mobile</h1>
+<p>ABOL includes an offline-first mobile data-capture architecture for field operations.</p>
+<p>Field workers can:</p>
+<ol>
+<li>Register farmers</li>
+<li>Register farms</li>
+<li>Register plots</li>
+<li>Capture GPS coordinates</li>
+<li>Map plot boundaries</li>
+<li>Calculate plot areas</li>
+<li>Record agricultural information</li>
+<li>Store records offline</li>
+<li>Synchronize data when connectivity returns</li>
+</ol>
+<pre><code class="language-text">Mobile App
+    ↓
+Local SQLite Database
+    ↓
+Offline Sync Queue
+    ↓
+ABOL API
+    ↓
+Central Database
+</code></pre>
+<p>This architecture is designed for rural environments where reliable internet connectivity may not always be available.</p>
+<hr />
+<h1 id="architecture">🏗️ Architecture</h1>
+<p>A high-level ABOL architecture:</p>
+<pre><code class="language-text">                    ┌──────────────────┐
+                    │   ABOL Web App   │
+                    └────────┬─────────┘
+                             │
+                    ┌────────▼─────────┐
+                    │    ABOL API      │
+                    └────────┬─────────┘
+                             │
+          ┌──────────────────┼──────────────────┐
+          │                  │                  │
+ ┌────────▼───────┐  ┌───────▼────────┐ ┌──────▼────────┐
+ │   Traceability │  │    GeoVerify   │ │ EUDR Engine   │
+ │     Engine     │  │     Engine     │ │               │
+ └────────┬───────┘  └───────┬────────┘ └──────┬────────┘
+          │                  │                  │
+          └──────────────────┼──────────────────┘
+                             │
+                    ┌────────▼─────────┐
+                    │   PostgreSQL +   │
+                    │     PostGIS      │
+                    └────────┬─────────┘
+                             │
+               ┌─────────────┼─────────────┐
+               │             │             │
+        ┌──────▼─────┐ ┌─────▼─────┐ ┌────▼────────┐
+        │ Satellite  │ │ External  │ │ Evidence /  │
+        │ Data       │ │ Datasets  │ │ Documents   │
+        └────────────┘ └───────────┘ └─────────────┘
+</code></pre>
+<hr />
+<h1 id="technology-stack">🧩 Technology Stack</h1>
+<p>The platform is intended to use modern open-source technologies.</p>
+<h3 id="frontend">Frontend</h3>
+<ul>
+<li>Next.js</li>
+<li>React</li>
+<li>TypeScript</li>
+<li>Tailwind CSS</li>
+</ul>
+<h3 id="mobile">Mobile</h3>
+<ul>
+<li>React Native</li>
+<li>Expo</li>
+<li>Expo Router</li>
+<li>SQLite</li>
+<li>MapLibre</li>
+</ul>
+<h3 id="backend">Backend</h3>
+<ul>
+<li>Python</li>
+<li>FastAPI</li>
+<li>REST APIs</li>
+</ul>
+<h3 id="database">Database</h3>
+<ul>
+<li>PostgreSQL</li>
+<li>PostGIS</li>
+</ul>
+<h3 id="geospatial">Geospatial</h3>
+<ul>
+<li>GeoJSON</li>
+<li>PostGIS</li>
+<li>GDAL</li>
+<li>Raster/vector processing</li>
+<li>Satellite imagery</li>
+<li>Spatial analysis</li>
+</ul>
+<h3 id="infrastructure">Infrastructure</h3>
+<ul>
+<li>Docker</li>
+<li>Docker Compose</li>
+<li>Linux</li>
+<li>GitHub Actions</li>
+</ul>
+<hr />
+<h1 id="repository-structure">📂 Repository Structure</h1>
+<p>The ABOL ecosystem is organized into independent components:</p>
+<pre><code class="language-text">abol-platform/
+│
+├── abol-web/
+│   └── Web platform
+│
+├── abol-api/
+│   └── Backend API
+│
+├── abol-mobile/
+│   └── Field data collection application
+│
+├── abol-geoverify/
+│   └── Geospatial verification engine
+│
+├── abol-eudr/
+│   └── EUDR compliance workflows
+│
+├── abol-coffee-passport/
+│   └── Digital coffee passport
+│
+├── abol-traceability/
+│   └── Supply-chain traceability engine
+│
+├── abol-data/
+│   └── Data models and datasets
+│
+├── abol-docs/
+│   └── Technical and user documentation
+│
+└── abol-infrastructure/
+    └── Deployment and infrastructure
+</code></pre>
+<hr />
+<h1 id="traceability-model">🔄 Traceability Model</h1>
+<p>ABOL represents supply-chain relationships as a connected graph.</p>
+<pre><code class="language-text">Farmer
+  │
+  ├── Farm
+  │     └── Plot
+  │           └── Harvest
+  │
+  └── Cooperative
+          │
+          └── Washing Station
+                  │
+                  └── Coffee Lot
+                          │
+                          ├── Processing
+                          ├── Quality Analysis
+                          ├── Transaction
+                          └── Export
+</code></pre>
+<p>Each relationship can be associated with digital evidence and timestamps.</p>
+<hr />
+<h1 id="data-integrity">🔐 Data Integrity</h1>
+<p>ABOL is designed around the principle that traceability data should be:</p>
+<ul>
+<li>Verifiable</li>
+<li>Auditable</li>
+<li>Timestamped</li>
+<li>Consistent</li>
+<li>Permission-controlled</li>
+<li>Interoperable</li>
+</ul>
+<p>Where appropriate, cryptographic technologies may be used to provide additional integrity and provenance guarantees.</p>
+<p>Blockchain is <strong>not required for the core ABOL architecture</strong>.</p>
+<hr />
+<h1 id="open-source">🌐 Open Source</h1>
+<p>ABOL is being developed with an open-source-first philosophy.</p>
+<p>The objective is to make core infrastructure accessible to:</p>
+<ul>
+<li>Developers</li>
+<li>Cooperatives</li>
+<li>Agricultural organizations</li>
+<li>Researchers</li>
+<li>NGOs</li>
+<li>Certification organizations</li>
+<li>Supply-chain companies</li>
+<li>Governments</li>
+<li>Technology partners</li>
+</ul>
+<hr />
+<h1 id="development">🛠️ Development</h1>
+<p>Clone the repository:</p>
+<pre><code class="language-bash">git clone https://github.com/abol-platform/abol-platform.git
+cd abol-platform
+</code></pre>
+<p>Install dependencies according to the individual component documentation.</p>
+<p>For local development, ABOL services can be run using Docker:</p>
+<pre><code class="language-bash">docker compose up -d
+</code></pre>
+<hr />
+<h1 id="roadmap">🗺️ Roadmap</h1>
+<h2 id="phase-1-foundation">Phase 1 — Foundation</h2>
+<ul>
+<li>[ ] Core data model</li>
+<li>[ ] Farmer registry</li>
+<li>[ ] Farm registry</li>
+<li>[ ] Plot registry</li>
+<li>[ ] Cooperative registry</li>
+<li>[ ] PostgreSQL/PostGIS infrastructure</li>
+<li>[ ] Authentication and authorization</li>
+</ul>
+<h2 id="phase-2-mobile">Phase 2 — Mobile</h2>
+<ul>
+<li>[ ] Offline field capture</li>
+<li>[ ] Farmer registration</li>
+<li>[ ] Farm registration</li>
+<li>[ ] Plot mapping</li>
+<li>[ ] GPS capture</li>
+<li>[ ] Offline synchronization</li>
+</ul>
+<h2 id="phase-3-geoverify">Phase 3 — GeoVerify</h2>
+<ul>
+<li>[ ] GeoJSON processing</li>
+<li>[ ] Plot-area calculation</li>
+<li>[ ] Coordinate validation</li>
+<li>[ ] Satellite-data integration</li>
+<li>[ ] Historical land-cover analysis</li>
+<li>[ ] Deforestation-risk engine</li>
+<li>[ ] Verification reports</li>
+</ul>
+<h2 id="phase-4-eudr">Phase 4 — EUDR</h2>
+<ul>
+<li>[ ] EUDR data model</li>
+<li>[ ] Due-diligence workflow</li>
+<li>[ ] Evidence management</li>
+<li>[ ] Risk assessment</li>
+<li>[ ] DDS preparation</li>
+<li>[ ] Compliance reporting</li>
+</ul>
+<h2 id="phase-5-coffee-passport">Phase 5 — Coffee Passport</h2>
+<ul>
+<li>[ ] Coffee lot identity</li>
+<li>[ ] Origin information</li>
+<li>[ ] Processing records</li>
+<li>[ ] Quality data</li>
+<li>[ ] COA integration</li>
+<li>[ ] Digital provenance</li>
+</ul>
+<h2 id="phase-6-ecosystem">Phase 6 — Ecosystem</h2>
+<ul>
+<li>[ ] Public APIs</li>
+<li>[ ] Developer SDK</li>
+<li>[ ] Partner integrations</li>
+<li>[ ] Data exchange</li>
+<li>[ ] Multi-commodity support</li>
+<li>[ ] International supply-chain interoperability</li>
+</ul>
+<hr />
+<h1 id="contributing">🤝 Contributing</h1>
+<p>Contributions are welcome.</p>
+<p>You can contribute through:</p>
+<ul>
+<li>Code</li>
+<li>Documentation</li>
+<li>GIS research</li>
+<li>Satellite-data research</li>
+<li>EUDR research</li>
+<li>Testing</li>
+<li>UI/UX</li>
+<li>Data modeling</li>
+<li>Security reviews</li>
+<li>Bug reports</li>
+<li>Feature proposals</li>
+</ul>
+<p>Before contributing, please read the project's contribution guidelines.</p>
+<hr />
+<h1 id="license">📜 License</h1>
+<p>The licensing model for ABOL components will be defined as the project matures.</p>
+<p>Individual repositories may use different licenses depending on the component and its dependencies.</p>
+<hr />
+<h1 id="built-for-african-agriculture">🌍 Built for African Agriculture</h1>
+<p>ABOL starts with <strong>Ethiopian coffee</strong>, but the underlying infrastructure is designed to support agricultural supply chains across Africa and beyond.</p>
+<p>Potential future commodities include:</p>
+<ul>
+<li>☕ Coffee</li>
+<li>🍯 Honey</li>
+<li>🌱 Spices</li>
+<li>🌾 Cereals</li>
+<li>🫘 Pulses</li>
+<li>🥑 Horticultural products</li>
+<li>🌴 Other regulated agricultural commodities</li>
+</ul>
+<hr />
+<h2 id="abol">⭐ ABOL</h2>
+<p><strong>Trace the origin. Verify the land. Prove the product.</strong></p>
+<p>ABOL is building digital infrastructure for a more <strong>transparent, verifiable, and sustainable agricultural supply chain.</strong></p>
+<hr />
+<p><strong>Project:</strong> ABOL
+<strong>Focus:</strong> Agricultural Traceability · Geospatial Verification · EUDR · Digital Product Provenance
+<strong>Initial Market:</strong> Ethiopia
+<strong>Primary Commodity:</strong> Coffee</p>
+</article></main>
+<footer>
+<div class="tag">Trace the origin. Verify the land. Prove the product.</div>
+<p>ABOOL &mdash; Agricultural Traceability &amp; Compliance Platform &middot; Initial Market: Ethiopia &middot; Primary Commodity: Coffee</p>
+<p>Source: <a href="https://github.com/ABOOL-PLATFORM">github.com/ABOOL-PLATFORM</a> (cloned README, rendered as a website) &middot; Built for African Agriculture</p>
+</footer>
+</body>
+</html>
